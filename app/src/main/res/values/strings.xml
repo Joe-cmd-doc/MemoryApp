@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MemoryApp</string>
+    <string name="title_activity_splash">Splash</string>
 </resources>
