@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">MemoryApp</string>
     <string name="title_activity_splash">Splash</string>
+    <string name="TancarSessio">Tancar Sessió</string>
+
+    <string name="miPuntuaciotxt">Puntuació</string>
+    <string name="puntuacio"> -- </string>
+    <string name="uid"> -- </string>
+    <string name="correo"> -- </string>
+    <string name="nom"> -- </string>
+    <string name="MenuTxt">MENÚ</string>
+    <string name="jugarBtn">Jugar</string>
+    <string name="PuntuacionsBtn">Puntuacions</string>
+    <string name="CreditsBtn">Crèdits</string>
 </resources>
