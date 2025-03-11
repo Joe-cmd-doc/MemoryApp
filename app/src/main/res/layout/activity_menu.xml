@@ -95,7 +95,7 @@
             android:id="@+id/tancarSessio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/TancarSessio"
+            android:text="@string/tancarSessio"
             android:layout_marginTop="10dp"
             android:background="@drawable/botopropi"
             android:textColor="@color/black"
