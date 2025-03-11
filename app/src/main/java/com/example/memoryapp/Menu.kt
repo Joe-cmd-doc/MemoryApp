@@ -3,6 +3,7 @@ package com.example.memoryapp
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -12,6 +13,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Menu : AppCompatActivity() {
     //creem unes variables per comprovar ususari i authentificació
@@ -27,6 +33,8 @@ class Menu : AppCompatActivity() {
     lateinit var uid: TextView
     lateinit var correo: TextView
     lateinit var nom: TextView
+    lateinit var reference: DatabaseReference
+
 
 
 
@@ -108,5 +116,54 @@ class Menu : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    private fun consulta(){
+        var database: FirebaseDatabase =
+            FirebaseDatabase.getInstance("https://montserratak-76f14-defaultrtdb.europe-west1.firebasedatabase.app/")
+        var bdreference:DatabaseReference = database.getReference("DATA BASE JUGADORS")
+                bdreference.addValueEventListener (object: ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.i ("DEBUG","arrel value"+
+                        snapshot.getValue().toString())
+                Log.i ("DEBUG","arrel key"+ snapshot.key.toString())
+                // ara capturem tots els fills
+                var trobat:Boolean =false
+                for (ds in snapshot.getChildren()) {
+                    Log.i ("DEBUG","DS key:"
+                        +ds.child("Uid").key.toString())
+                                Log.i ("DEBUG","DS value:"
+                        +ds.child("Uid").getValue().toString())
+                                Log.i ("DEBUG","DS data:"
+                        +ds.child("Data").getValue().toString())
+                                Log.i ("DEBUG","DS mail:"
+                        +ds.child("Email").getValue().toString())
+
+                        if(ds.child("Email").getValue().toString().equals(user?.email)){
+
+                            trobat=true
+
+                            puntuacio.setText(
+                                ds.child("Puntuacio").getValue().toString())
+                            uid.setText(
+                                ds.child("Uid").getValue().toString())
+                            correo.setText(
+                                ds.child("Email").getValue().toString())
+                            nom.setText(
+                                ds.child("Nom").getValue().toString())
+                        }
+                        if (!trobat)
+                        {
+                            Log.e ("ERROR","ERROR NO TROBAT MAIL")
+                        }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.e ("ERROR","ERROR DATABASE CANCEL")
+            }
+        })
+    }
+
+
 
 }
