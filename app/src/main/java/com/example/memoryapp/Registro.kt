@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -35,7 +37,6 @@ class Registro : AppCompatActivity() {
         Registrar = findViewById(R.id.Registrar)
         auth = FirebaseAuth.getInstance()
 
-
         // Cargar la fecha en el TextView
         val date = Calendar.getInstance().time
         val formatter = SimpleDateFormat("dd/MM/yyyy")
@@ -43,54 +44,69 @@ class Registro : AppCompatActivity() {
         fechaTxt.text = formattedDate
 
         Registrar.setOnClickListener() {
-            //Abans de fer el registre validem les dades
-            var email: String = correoEt.getText().toString()
-            var pass: String = passEt.getText().toString()
-            // validació del correu
-            // si no es de tipus correu
+            // Antes de registrar validamos las entradas
+            var email: String = correoEt.text.toString()
+            var pass: String = passEt.text.toString()
+
+            // Validación del correo
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                correoEt.setError("Invalid Mail")
+                correoEt.error = "Correo no válido"
             } else if (pass.length < 6) {
-                passEt.setError("Password less than 6 chars")
+                passEt.error = "La contraseña debe tener al menos 6 caracteres"
             } else {
                 RegistrarJugador(email, pass)
             }
-
         }
-
     }
 
-    fun RegistrarJugador(email:String, passw:String){
+    fun RegistrarJugador(email: String, passw: String) {
         auth.createUserWithEmailAndPassword(email, passw)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(
-                        this,"createUserWithEmail:success",Toast.LENGTH_SHORT).show()
+                    // Registro exitoso
+                    Toast.makeText(this, "Usuario creado con éxito", Toast.LENGTH_SHORT).show()
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    //updateUI(null)
+                    Toast.makeText(baseContext, "Error al crear el usuario.", Toast.LENGTH_SHORT).show()
                 }
             }
     }
-    fun updateUI(user: FirebaseUser?){
-        //hi ha un interrogant perquè podria ser null
-        if (user!=null)
-        {
-            var puntuacio: Int = 0
-            var uidString: String = user.uid
-            var correoString: String = correoEt.getText().toString()
-            var passString: String = passEt.getText().toString()
-            var nombreString: String = nombreEt.getText().toString()
-            var fechaString: String= fechaTxt.getText().toString()
-            //AQUI GUARDA EL CONTINGUT A LA BASE DE DADES
-// FALTA FER
-        }
-        else
-        {
-            Toast.makeText( this,"ERROR CREATE USER",Toast.LENGTH_SHORT).show()
+
+    fun updateUI(user: FirebaseUser?) {
+        // Comprobamos si el usuario es no nulo
+        if (user != null) {
+            // Variables de datos
+            val puntuacion = 0 // Esto lo puedes cambiar según tu lógica
+            val uidString = user.uid
+            val correoString = correoEt.text.toString()
+            val passString = passEt.text.toString()
+            val nombreString = nombreEt.text.toString()
+            val fechaString = fechaTxt.text.toString()
+
+            // Guardar los datos en un HashMap
+            val dadesJugador: HashMap<String, String> = HashMap()
+            dadesJugador["Uid"] = uidString
+            dadesJugador["Email"] = correoString
+            dadesJugador["Password"] = passString
+            dadesJugador["Nom"] = nombreString
+            dadesJugador["Data"] = fechaString
+            dadesJugador["Puntuacio"] = puntuacion.toString()
+
+            // Conectarse a Firebase Database
+            val database = FirebaseDatabase.getInstance("https://memoryapp-7c04d-default-rtdb.firebaseio.com/")
+            val reference: DatabaseReference = database.getReference("DATA_BASE_JUGADORS")
+
+            // Guardar el usuario en la base de datos
+            reference.child(uidString).setValue(dadesJugador).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Toast.makeText(this, "Usuario guardado en la base de datos", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Error al guardar en la base de datos", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            Toast.makeText(this, "Error al crear el usuario", Toast.LENGTH_SHORT).show()
         }
     }
 }
