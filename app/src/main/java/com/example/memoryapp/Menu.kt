@@ -118,9 +118,8 @@ class Menu : AppCompatActivity() {
     }
 
     private fun consulta(){
-        var database: FirebaseDatabase =
-            FirebaseDatabase.getInstance("https://montserratak-76f14-defaultrtdb.europe-west1.firebasedatabase.app/")
-        var bdreference:DatabaseReference = database.getReference("DATA BASE JUGADORS")
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance("https://memoryapp-7c04d-default-rtdb.firebaseio.com/")
+        var bdreference:DatabaseReference = database.getReference("DATA_BASE_JUGADORS")
                 bdreference.addValueEventListener (object: ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
