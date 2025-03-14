@@ -85,6 +85,8 @@ class Menu : AppCompatActivity() {
             Toast.makeText(this,"JUGAR", Toast.LENGTH_SHORT).show()
         }
 
+        consulta()
+
     }
 
     private fun Usuarilogejat()
@@ -119,8 +121,8 @@ class Menu : AppCompatActivity() {
 
     private fun consulta(){
         var database: FirebaseDatabase = FirebaseDatabase.getInstance("https://memoryapp-7c04d-default-rtdb.firebaseio.com/")
-        var bdreference:DatabaseReference = database.getReference("DATA_BASE_JUGADORS")
-                bdreference.addValueEventListener (object: ValueEventListener {
+        reference = database.getReference("DATA_BASE_JUGADORS")
+        reference.addValueEventListener (object: ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.i ("DEBUG","arrel value"+
