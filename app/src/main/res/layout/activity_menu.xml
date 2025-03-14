@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="60dp">
         <!-- Text La meva puntuació -->
         <TextView
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/uid"
             android:text="@string/uid"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:gravity="center"/>
         <!-- correu -->
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/correo"
             android:text="@string/correo"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/black"
             android:gravity="center"/>
 
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/nom"
             android:text="@string/nom"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/black"
             android:gravity="center"/>
         <!-- BOTO DE jugar -->
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/jugarBtn"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/botopropi"
             android:textColor="@color/black"
 
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/PuntuacionsBtn"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/botopropi"
             android:textColor="@color/black"
 
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/CreditsBtn"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/botopropi"
             android:textColor="@color/black"
 
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tancarSessio"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/botopropi"
             android:textColor="@color/black"
 
