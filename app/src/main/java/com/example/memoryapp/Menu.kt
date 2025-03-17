@@ -35,6 +35,8 @@ class Menu : AppCompatActivity() {
     lateinit var nom: TextView
     lateinit var reference: DatabaseReference
 
+    private var nivell ="1"
+
 
 
 
@@ -82,7 +84,19 @@ class Menu : AppCompatActivity() {
             Toast.makeText(this,"Puntuacions", Toast.LENGTH_SHORT).show()
         }
         jugarBtn.setOnClickListener(){
-            Toast.makeText(this,"JUGAR", Toast.LENGTH_SHORT).show()
+            //hem d'enviar el id, el nom i el contador, i el nivell
+            var Uids : String = uid.getText().toString()
+            var noms : String = nom.getText().toString()
+            var puntuacios : String = puntuacio.getText().toString()
+            var nivells : String = nivell
+            val intent= Intent(this, MenuNivells::class.java)
+            intent.putExtra("UID",Uids)
+            intent.putExtra("NOM",noms)
+            intent.putExtra("PUNTUACIO",puntuacios)
+            intent.putExtra("NIVELL",nivells)
+            startActivity(intent)
+            finish()
+
         }
 
         consulta()
@@ -152,6 +166,9 @@ class Menu : AppCompatActivity() {
                                 ds.child("Email").getValue().toString())
                             nom.setText(
                                 ds.child("Nom").getValue().toString())
+
+                            nivell = ds.child("Nivell").getValue().toString()
+
                         }
                         if (!trobat)
                         {
