@@ -83,6 +83,8 @@ class Registro : AppCompatActivity() {
             val passString = passEt.text.toString()
             val nombreString = nombreEt.text.toString()
             val fechaString = fechaTxt.text.toString()
+            var nivell: String = "1"
+
 
             // Guardar los datos en un HashMap
             val dadesJugador: HashMap<String, String> = HashMap()
@@ -92,6 +94,8 @@ class Registro : AppCompatActivity() {
             dadesJugador["Nom"] = nombreString
             dadesJugador["Data"] = fechaString
             dadesJugador["Puntuacio"] = puntuacion.toString()
+            dadesJugador["Nivell"]=nivell
+
 
             // Conectarse a Firebase Database
             val database = FirebaseDatabase.getInstance("https://memoryapp-7c04d-default-rtdb.firebaseio.com/")
