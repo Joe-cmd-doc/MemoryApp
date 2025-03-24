@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#58FA58"
+    android:background="#274B34"
     android:layout_gravity="center"
     tools:context=".Menu">
     <LinearLayout
@@ -21,7 +21,7 @@
             android:id="@+id/miPuntuaciotxt"
             android:text="@string/miPuntuaciotxt"
             android:textSize="50sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:gravity="center"/>
 
         <!-- contingut puntuació -->
@@ -31,7 +31,7 @@
             android:id="@+id/puntuacio"
             android:text="@string/puntuacio"
             android:textSize="50sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:gravity="center"/>
         <!-- Imatge alien -->
         <androidx.appcompat.widget.AppCompatImageView
@@ -46,7 +46,7 @@
             android:id="@+id/uid"
             android:text="@string/uid"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:gravity="center"/>
         <!-- correu -->
         <TextView
@@ -55,7 +55,7 @@
             android:id="@+id/correo"
             android:text="@string/correo"
             android:textSize="25sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:gravity="center"/>
 
         <!-- nom -->
@@ -65,7 +65,7 @@
             android:id="@+id/nom"
             android:text="@string/nom"
             android:textSize="25sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:gravity="center"/>
         <!-- BOTO DE jugar -->
         <Button
