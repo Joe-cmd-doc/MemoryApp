@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout android:id="@+id/gridLayout"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="3"
-    android:rowCount="4"
-    android:padding="16dp"
-    android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-</GridLayout>
+    android:background="#274B34"
+    android:padding="16dp">
+
+    <!-- Texto del nivel en la esquina superior izquierda -->
+    <TextView
+        android:id="@+id/textViewNivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nivell: 0"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"/>
+
+    <!-- Temporizador alineado a la derecha -->
+    <TextView
+        android:id="@+id/textViewTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temps:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"/>
+
+    <!-- GridLayout centrado en la pantalla -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:padding="16dp"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

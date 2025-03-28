@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#274B34"
+    android:padding="16dp">
+
+    <!-- Mensaje de Game Over centrado -->
+    <TextView
+        android:id="@+id/textViewGameOver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bon intent, ara què vols fer?"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"/>
+
+    <!-- Botón para reintentar centrado -->
+    <Button
+        android:id="@+id/buttonReintentar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tornar a intentar"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="#00796B"
+        android:layout_below="@id/textViewGameOver"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Botón para selección de niveles centrado -->
+    <Button
+        android:id="@+id/buttonSeleccioNivells"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anar a selecció de nivells"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="#00796B"
+        android:layout_below="@id/buttonReintentar"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Botón para el menú principal centrado -->
+    <Button
+        android:id="@+id/buttonMenuPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menú principal"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="#00796B"
+        android:layout_below="@id/buttonSeleccioNivells"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

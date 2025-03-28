@@ -89,8 +89,8 @@ class Menu : AppCompatActivity() {
             var noms : String = nom.getText().toString()
             var puntuacios : String = puntuacio.getText().toString()
             var nivells : String = nivell
-            val intent= Intent(this, MenuNivells::class.java)
-            //val intent= Intent(this, Nivell0::class.java)
+            //val intent= Intent(this, MenuNivells::class.java)
+            val intent= Intent(this, Nivell0::class.java)
             intent.putExtra("UID",Uids)
             intent.putExtra("NOM",noms)
             intent.putExtra("PUNTUACIO",puntuacios)
