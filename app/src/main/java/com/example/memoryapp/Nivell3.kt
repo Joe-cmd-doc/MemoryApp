@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import kotlin.random.Random
-class Nivell0 : AppCompatActivity() {
+
+class Nivell3 : AppCompatActivity() {
 
     private lateinit var gridLayout: GridLayout
     private val cartas = mutableListOf<Carta>()
@@ -20,41 +20,40 @@ class Nivell0 : AppCompatActivity() {
     private lateinit var botones: MutableList<Button>
     private lateinit var textViewTiempo: TextView
     private lateinit var temporizador: CountDownTimer
-    private var tiempoRestante: Long = 1200000 // 120s
+    private var tiempoRestante: Long = 60000 // 60s
     private var parejasEncontradas = 0
-    private lateinit var textViewNivel: TextView  // Añadido
+    private lateinit var textViewNivel: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nivell0)
+        setContentView(R.layout.activity_nivell3)
 
         gridLayout = findViewById(R.id.gridLayout)
         textViewTiempo = findViewById(R.id.textViewTiempo)
-        textViewNivel = findViewById(R.id.textViewNivel) // Inicialización
+        textViewNivel = findViewById(R.id.textViewNivel)
 
         inicializarCartas()
         mostrarCartas()
 
-        // Mostrar las cartas durante 5 segundos antes de ocultarlas
         Handler().postDelayed({
-            cartas.forEach { it.esVisible = false }  // Ocultar todas las cartas
+            cartas.forEach { it.esVisible = false }
             actualizarVista()
-            iniciarTemporizador()  // Iniciar temporizador
+            iniciarTemporizador()
         }, 5000)
     }
 
     private fun inicializarCartas() {
-        val valores = listOf("A", "B", "C", "D", "A", "B", "C", "D", "E", "F", "E", "F")
+        val valores = listOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "A", "B", "C", "D", "E", "F", "G", "H")
         valores.forEach { cartas.add(Carta(it)) }
         cartas.shuffle()
     }
 
     private fun mostrarCartas() {
         botones = mutableListOf()
-        for (i in 0 until 12) {
+        for (i in 0 until 24) {
             val carta = cartas[i]
             val button = Button(this).apply {
-                text = carta.valor  // Mostrar valor de la carta directamente
+                text = carta.valor
                 setOnClickListener { voltearCarta(carta, this) }
             }
             botones.add(button)
@@ -75,7 +74,7 @@ class Nivell0 : AppCompatActivity() {
         val (carta1, carta2) = cartasSeleccionadas
         if (carta1.valor == carta2.valor) {
             parejasEncontradas++
-            if (parejasEncontradas == 6) ganarJuego()
+            if (parejasEncontradas == 12) ganarJuego()
         } else {
             Handler().postDelayed({
                 carta1.esVisible = false
@@ -87,10 +86,10 @@ class Nivell0 : AppCompatActivity() {
     }
 
     private fun actualizarVista() {
-        for (i in 0 until 12) {
+        for (i in 0 until 24) {
             val carta = cartas[i]
             val button = botones[i]
-            button.text = if (carta.esVisible) carta.valor else "?"  // Ocultar cartas si no son visibles
+            button.text = if (carta.esVisible) carta.valor else "?"
         }
     }
 
@@ -156,11 +155,10 @@ class Nivell0 : AppCompatActivity() {
 
         // Redirigir a la actividad de nivel completado
         val intent = Intent(this, NivelCompletado::class.java)
-        intent.putExtra("nivellActual", 0) // Pasar el nivel actual
+        intent.putExtra("nivellActual", 3) // Pasar el nivel actual
         startActivity(intent)
         finish()
     }
-
 
     private fun irAGameOver() {
         val intent = Intent(this, GameOver::class.java)

@@ -13,6 +13,15 @@
         android:theme="@style/Theme.MemoryApp"
         tools:targetApi="31">
         <activity
+            android:name=".Nivell3"
+            android:exported="false" />
+        <activity
+            android:name=".Nivell2"
+            android:exported="false" />
+        <activity
+            android:name=".Nivell1"
+            android:exported="false" />
+        <activity
             android:name=".NivelCompletado"
             android:exported="false" />
         <activity

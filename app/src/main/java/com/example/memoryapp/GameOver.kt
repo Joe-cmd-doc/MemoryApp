@@ -1,11 +1,10 @@
+
 package com.example.memoryapp
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 
 class GameOver : AppCompatActivity() {
@@ -15,6 +14,7 @@ class GameOver : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_game_over)
 
+        val nivellActualInt = intent.getIntExtra("nivellActual", 0) // 0 es el valor por defecto si no se pasa nada
         // Enlazar botones
         val buttonReintentar = findViewById<Button>(R.id.buttonReintentar)
         val buttonSeleccioNivells = findViewById<Button>(R.id.buttonSeleccioNivells)
@@ -22,8 +22,14 @@ class GameOver : AppCompatActivity() {
 
         // Acción para "Tornar a intentar"
         buttonReintentar.setOnClickListener {
-            // Aquí podrías reiniciar el nivel o reiniciar el juego, ejemplo:
-            val intent = Intent(this, Nivell0::class.java) // Cambia a la actividad correspondiente
+            // Usar un when para decidir qué actividad lanzar según el nivel
+            val intent = when (nivellActualInt) {
+                0 -> Intent(this, Nivell0::class.java)
+                1 -> Intent(this, Nivell1::class.java)
+                2 -> Intent(this, Nivell2::class.java)
+                3 -> Intent(this, Nivell3::class.java)
+                else -> Intent(this, Nivell0::class.java) // Valor por defecto si no se pasa un nivel válido
+            }
             startActivity(intent)
             finish() // Para cerrar la pantalla de GameOver
         }

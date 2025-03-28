@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     android:background="#274B34"
     android:padding="16dp">
 
@@ -13,10 +15,7 @@
         android:text="Bon intent, ara què vols fer?"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"/>
+        android:textStyle="bold"/>
 
     <!-- Botón para reintentar centrado -->
     <Button
@@ -27,9 +26,7 @@
         android:textSize="18sp"
         android:textColor="#FFFFFF"
         android:background="#00796B"
-        android:layout_below="@id/textViewGameOver"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="30dp"/>
 
     <!-- Botón para selección de niveles centrado -->
     <Button
@@ -40,9 +37,7 @@
         android:textSize="18sp"
         android:textColor="#FFFFFF"
         android:background="#00796B"
-        android:layout_below="@id/buttonReintentar"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="20dp"/>
 
     <!-- Botón para el menú principal centrado -->
     <Button
@@ -53,8 +48,6 @@
         android:textSize="18sp"
         android:textColor="#FFFFFF"
         android:background="#00796B"
-        android:layout_below="@id/buttonSeleccioNivells"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="20dp"/>
 
-</RelativeLayout>
+</LinearLayout>
